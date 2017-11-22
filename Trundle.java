@@ -1,16 +1,17 @@
 import lejos.robotics.subsumption.Behavior;
 
 public class Trundle implements Behavior {
+	public static int TRAVEL_SPEED = 360; //to be confirmed
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanDistance.getDistance() >= FindingLine.BOX_DISTANCE);
+		return true;
 	}
 
 	@Override
 	public void action() {
+		Forklift.pilot.setTravelSpeed(TRAVEL_SPEED);
 		Forklift.pilot.forward();
-
 	}
 
 	@Override

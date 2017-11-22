@@ -1,7 +1,9 @@
 import lejos.robotics.subsumption.Behavior;
 
 public class FindingLine implements Behavior {
-	final static float BOX_DISTANCE = 3; //To be confirmed
+	final static float BOX_DISTANCE = 30; //To be confirmed
+	final static float TURN = 90;
+	final static int ROTATE_SPEED = 360;
 
 	@Override
 	public boolean takeControl() {
@@ -10,8 +12,9 @@ public class FindingLine implements Behavior {
 
 	@Override
 	public void action() {
+		Forklift.pilot.setRotateSpeed(ROTATE_SPEED);
 		Forklift.pilot.stop();
-		Forklift.pilot.rotate(90);
+		Forklift.pilot.rotate(TURN);
 
 	}
 
