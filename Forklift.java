@@ -23,6 +23,7 @@ class Forklift {
 	public static TouchSensor boxTouch = new TouchSensor(SensorPort.S4);
 	public static Map<String, Integer> FloorColours = new HashMap<String, Integer>();
 	public static Map<String, Integer> BoxColours = new HashMap<String, Integer>();
+	public static boolean FoundLine = false;
 	
 
 	private static void CalibrateColours(Map<String, Integer> ColourMap, String level, LightSensor sensor) {
