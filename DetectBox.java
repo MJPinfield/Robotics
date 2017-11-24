@@ -1,7 +1,7 @@
 import lejos.nxt.Motor;
 import lejos.robotics.subsumption.Behavior;
 
-public class PickUp implements Behavior {
+public class DetectBox implements Behavior {
 
 	@Override
 	public boolean takeControl() {
@@ -10,12 +10,15 @@ public class PickUp implements Behavior {
 
 	@Override
 	public void action() {
-		Motor.C.setSpeed(50);
-		Motor.C.rotate(360);
+		Forklift.FollowingLine = false;
+		Motor.B.setSpeed(50);
+		Motor.B.rotate(-360);
+
 	}
 
 	@Override
 	public void suppress() {
+		// TODO Auto-generated method stub
 
 	}
 

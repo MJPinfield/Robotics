@@ -1,18 +1,16 @@
  import lejos.robotics.subsumption.Behavior;
 
 public class TurnLeft implements Behavior {
-	public static int ROTATION = 90;
-	public static int WALL_DISTANCE = 20;
+	
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanDistance.getDistance() <= WALL_DISTANCE);
+		return (Forklift.scanDistance.getDistance() <= Config.WALL_DISTANCE && !Forklift.FollowingLine);
 	}
 
 	@Override
 	public void action() {
-		Forklift.pilot.stop();
-		Forklift.pilot.rotate(ROTATION);
+		Forklift.pilot.rotate(-Config.WALL_ROTATE);
 
 	}
 
