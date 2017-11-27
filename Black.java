@@ -4,7 +4,7 @@ public class Black implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanZone.readValue() >= (Forklift.FloorColours[0] - 5) && Forklift.scanZone.readValue() <= (Forklift.FloorColours[0] + 5)) && Forklift.FollowingLine;
+		return (Forklift.scanZone.readValue() >= (Forklift.FloorColours[0] - 10) && Forklift.scanZone.readValue() <= (Forklift.FloorColours[0] + 10) && Forklift.FollowingLine && !Forklift.PayloadLoaded);
 	}
 
 	@Override

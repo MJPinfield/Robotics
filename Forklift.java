@@ -18,15 +18,9 @@ class Forklift {
 	public static LightSensor scanZone = new LightSensor(SensorPort.S2, true);
 	public static UltrasonicSensor scanDistance = new UltrasonicSensor(SensorPort.S1);
 	public static TouchSensor boxTouch = new TouchSensor(SensorPort.S4);
-	public static boolean FollowingLine = false; 
-	public static boolean NotOnLine = false;
-	public static boolean GreenFloor = false;
-	public static boolean RedFloor = false;
-	public static boolean BlueFloor = false;
-	public static boolean GreenBox = false; 
-	public static boolean RedBox = false;
-	public static boolean BlueBox = false;
-	// 1 = black, 2 = white, 3 = blue, 4 = red, 5 = green
+	public static boolean FollowingLine = false;
+	public static boolean PayloadLoaded = false;
+	// 0 = black, 1 = white, 2 = blue, 3 = red, 4 = green
 	public static int[] FloorColours = new int[5];
 	public static int[] BoxColours = new int[5];
 
@@ -72,22 +66,14 @@ class Forklift {
 		scanZone.setFloodlight(true);
 		scanBox.setFloodlight(true);
 	
-		Behavior b1 = new Trundle();
-	    Behavior b2 = new TurnLeft();
-	    Behavior b3 = new DetectLine();
-	    Behavior b4 = new Black(); 
-	    Behavior b5 = new White();
-	    Behavior b6 = new DetectBox();
-	    //Behavior b7 = new DetectWhite();
-	   // Behavior b8 = new DetectGreenBox();
-	   // Behavior b9 = new DetectRedBox();
-	   // Behavior b10 = new DetectBlueBox();
-	   // Behavior b11 = new DetectGreenFloor();
-	   // Behavior b12 = new DetectRedFloor();
-	    //Behavior b13 = new DetectBlueFloor();
-	    
-	    Behavior [] behaviours = {b1, b2, b3, b4, b5, b6};
+		Behavior [] behaviours = {new Trundle(), new DetectLine(), new Black(), new White(), new DetectBox(), new TurnLeft(), new RedZone(), new GreenZone(), new BlueZone(), new LowBattery()};
 	    Arbitrator arbitrator = new Arbitrator(behaviours);
+	    
+	    LCD.clear();
+	    LCD.drawString("Georgie", 0, 0);
+	    LCD.drawString("Version 1.0.2", 0, 1);
+	    Button.ENTER.waitForPressAndRelease();
+	    
 	    arbitrator.start();
 	}
 }
