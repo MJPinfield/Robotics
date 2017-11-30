@@ -4,7 +4,7 @@ public class DetectLine implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanZone.readValue() >= (Forklift.FloorColours[0] - 5) && Forklift.scanZone.readValue() <= (Forklift.FloorColours[0] + 5 )) && !Forklift.boxTouch.isPressed();
+		return (Forklift.scanZone.readNormalizedValue() >= (Forklift.FloorColours[0] - 20) && Forklift.scanZone.readNormalizedValue() <= (Forklift.FloorColours[0] + 20 )) && !Forklift.boxTouch.isPressed();
 	}
 
 	@Override

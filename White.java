@@ -4,12 +4,13 @@ public class White implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanZone.readValue() >= (Forklift.FloorColours[1] - 10) && Forklift.scanZone.readValue() <= (Forklift.FloorColours[1] + 10) && Forklift.FollowingLine && !Forklift.PayloadLoaded);
+		return (Forklift.scanZone.readNormalizedValue() >= (Forklift.FloorColours[1] - 20) && Forklift.scanZone.readNormalizedValue() <= (Forklift.FloorColours[1] + 20) && Forklift.FollowingLine && !Forklift.PayloadLoaded);
 	}
 
 	@Override
 	public void action() {
-		Forklift.pilot.rotate(-3);
+		Forklift.pilot.stop();
+		Forklift.pilot.rotate(-5);
 
 	}
 

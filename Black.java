@@ -4,12 +4,12 @@ public class Black implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (Forklift.scanZone.readValue() >= (Forklift.FloorColours[0] - 10) && Forklift.scanZone.readValue() <= (Forklift.FloorColours[0] + 10) && Forklift.FollowingLine && !Forklift.PayloadLoaded);
+		return (Forklift.scanZone.readNormalizedValue() >= (Forklift.FloorColours[0] - 20) && Forklift.scanZone.readNormalizedValue() <= (Forklift.FloorColours[0] + 20) && Forklift.FollowingLine && !Forklift.PayloadLoaded);
 	}
 
 	@Override
 	public void action() {
-		Forklift.pilot.travel(10);
+		Forklift.pilot.forward();
 
 	}
 
